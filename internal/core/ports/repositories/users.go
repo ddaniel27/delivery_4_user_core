@@ -1,0 +1,15 @@
+package repositories
+
+import (
+	"context"
+	"ddaniel27/usercore/internal/core/models"
+)
+
+type UsersRepository interface {
+	GetUserByID(ctx context.Context, id int) (models.User, error)
+	GetUserByEmail(ctx context.Context, email string) (models.User, error)
+	CreateUser(ctx context.Context, user models.User) (models.User, error)
+	UpdateUser(ctx context.Context, user models.User) (models.User, error)
+	DeleteUserByID(ctx context.Context, id int) error
+	DeleteUserByEmail(ctx context.Context, email string) error
+}
