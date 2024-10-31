@@ -16,9 +16,13 @@ func (a *App) setupInfrastructure() {
 	host := getEnvFallback("POSTGRES_HOST", "localhost")
 	port := getEnvFallback("POSTGRES_PORT", "5432")
 
+	check := getEnvFallback("ENVCHECK", "local")
+
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/isbn?sslmode=disable", user, password, host, port)
 	sqlDB := sql.OpenDB(pgdriver.NewConnector(pgdriver.WithDSN(dsn)))
 	db := bun.NewDB(sqlDB, pgdialect.New())
+
+	fmt.Println("check: ", check)
 
 	userStorage := database.NewUsersStorage(db)
 	credentialStorage := database.NewCredentialsStorage(db)
