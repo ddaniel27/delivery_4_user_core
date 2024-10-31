@@ -29,7 +29,7 @@
             "secrets": [
               {
                 "name": "ENVCHECK",
-                "valueFrom": "arn:aws:secretsmanager:us-east-1:488630032666:secret:envcheckvalue-YpzCjY"
+                "valueFrom": "arn:aws:ssm:us-east-1:488630032666:parameter/envcheck"
               }
             ]
         }
