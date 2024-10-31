@@ -30,6 +30,22 @@
               {
                 "name": "ENVCHECK",
                 "valueFrom": "arn:aws:ssm:us-east-1:488630032666:parameter/envcheck"
+              },
+              {
+                "name": "POSTGRES_USER",
+                "valueFrom": "arn:aws:ssm:us-east-1:488630032666:parameter/POSTGRES_USER"
+              },
+              {
+                "name": "POSTGRES_PASSWORD",
+                "valueFrom": "arn:aws:ssm:us-east-1:488630032666:parameter/POSTGRES_PASSWORD"
+              },
+              {
+                "name": "POSTGRES_PORT",
+                "valueFrom": "arn:aws:ssm:us-east-1:488630032666:parameter/POSTGRES_PORT"
+              },
+              {
+                "name": "POSTGRES_HOST",
+                "valueFrom": "arn:aws:ssm:us-east-1:488630032666:parameter/POSTGRES_HOST"
               }
             ]
         }
