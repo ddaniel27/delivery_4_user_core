@@ -37,7 +37,7 @@ func (a *App) setupRoutes(g *gin.RouterGroup) {
 }
 
 func (a *App) startServer() {
-	if err := a.Server.Run(fmt.Sprintf(":%s", getPortFallback("PORT", "3000"))); err != nil && err != http.ErrServerClosed {
+	if err := a.Server.Run(fmt.Sprintf(":%s", getEnvFallback("PORT", "3000"))); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
@@ -66,7 +66,7 @@ func setupHealthCheckRoute(g *gin.RouterGroup) {
 	})
 }
 
-func getPortFallback(env string, fallback string) string {
+func getEnvFallback(env string, fallback string) string {
 	port := os.Getenv(env)
 	if port == "" {
 		return fallback
