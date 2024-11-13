@@ -6,7 +6,6 @@ on:
 
 env:
   ECS_CLUSTER: isbn-cluster
-  ECS_SERVICE: isbn-service-uc-2
   ECS_TASK_DEFINITION: ./.github/files/definition.json
   CONTAINER_NAME: isbn-uc
   REPOSITORY_NAME: ecr-isbn-uc
