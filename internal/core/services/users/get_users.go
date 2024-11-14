@@ -26,3 +26,16 @@ func (us *UserService) GetUserByEmail(ctx context.Context, email string) (models
 
 	return u, nil
 }
+
+func (us *UserService) GetUsers(ctx context.Context) ([]models.User, error) {
+	users, err := us.UserRepository.GetUsers(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	for i := range users {
+		users[i].CredentialsID = -1 // don't return the credentials id
+	}
+
+	return users, nil
+}

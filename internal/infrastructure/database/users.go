@@ -31,6 +31,13 @@ func (s *UsersStorage) GetUserByEmail(ctx context.Context, email string) (models
 	return user, err
 }
 
+func (s *UsersStorage) GetUsers(ctx context.Context) ([]models.User, error) {
+	var users []models.User
+	err := s.db.NewSelect().Model(&users).Scan(ctx)
+
+	return users, err
+}
+
 func (s *UsersStorage) CreateUser(ctx context.Context, user models.User) (models.User, error) {
 	_, err := s.db.NewInsert().Model(&user).Exec(ctx)
 

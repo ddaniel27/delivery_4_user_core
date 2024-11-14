@@ -8,6 +8,7 @@ import (
 type UsersRepository interface {
 	GetUserByID(ctx context.Context, id int) (models.User, error)
 	GetUserByEmail(ctx context.Context, email string) (models.User, error)
+	GetUsers(ctx context.Context) ([]models.User, error)
 	CreateUser(ctx context.Context, user models.User) (models.User, error)
 	UpdateUser(ctx context.Context, user models.User) (models.User, error)
 	DeleteUserByID(ctx context.Context, id int) error

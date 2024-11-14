@@ -66,3 +66,17 @@ func (h *UserHandler) GetUserByEmail(c *gin.Context) {
 
 	c.JSON(200, gin.H{"user": user})
 }
+
+func (h *UserHandler) GetUsers(c *gin.Context) {
+	ctx, span := h.tracer.Start(c.Request.Context(), "GetUsers")
+	defer span.End()
+
+	users, err := h.UsersService.GetUsers(ctx)
+	if err != nil {
+		h.logger.Error(err.Error())
+		c.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(200, gin.H{"users": users})
+}
