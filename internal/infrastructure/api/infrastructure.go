@@ -18,7 +18,7 @@ func (a *App) setupInfrastructure() {
 
 	check := getEnvFallback("ENVCHECK", "local")
 
-	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/isbn?sslmode=disable", user, password, host, port)
+	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/isbn?sslmode=require", user, password, host, port)
 	sqlDB := sql.OpenDB(pgdriver.NewConnector(pgdriver.WithDSN(dsn)))
 	db := bun.NewDB(sqlDB, pgdialect.New())
 

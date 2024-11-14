@@ -26,6 +26,9 @@ func (h *UserHandler) GetUserByID(c *gin.Context) {
 		return
 	}
 
+	c.JSON(200, gin.H{"id": p.ID})
+	return
+
 	user, err := h.UsersService.GetUserByID(ctx, p.ID)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
