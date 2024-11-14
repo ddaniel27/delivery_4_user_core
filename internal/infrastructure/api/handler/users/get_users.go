@@ -52,6 +52,9 @@ func (h *UserHandler) GetUserByEmail(c *gin.Context) {
 		return
 	}
 
+	c.JSON(200, gin.H{"email": p.Email})
+	return
+
 	user, err := h.UsersService.GetUserByEmail(ctx, p.Email)
 	if err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
